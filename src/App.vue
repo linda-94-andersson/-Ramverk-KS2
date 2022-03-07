@@ -1,10 +1,8 @@
 <script setup>
-import ToDoList from "./components/ToDoList.vue";
 import ToDoListApp from "./components/To-Do-List-App.vue";
 </script>
 
 <template>
-  <!-- <ToDoList /> -->
   <ToDoListApp />
 </template>
 

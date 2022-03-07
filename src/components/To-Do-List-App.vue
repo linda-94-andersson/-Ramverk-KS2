@@ -7,26 +7,31 @@ export default {
     const tasks = ref([]);
 
     function storeItem() {
-     tasks.value.push({
-         id: Date.now(),
-         done: false, 
-         content: newItem.value, 
-     });
-     newItem.value = ''; 
+      tasks.value.push({
+        id: Date.now(),
+        done: false,
+        content: newItem.value,
+      });
+      newItem.value = "";
     }
+
+    function toggleDone(task) {
+      task.done = !task.done;
+    }
+
+    function delItem(index) {
+      tasks.value.splice(index, 1);
+    }
+
     return {
       newItem,
       tasks,
       storeItem,
+      toggleDone,
+      delItem,
     };
   },
 };
-
-//     delItem: function (task) {
-//       this.tasks.splice(this.tasks.indexOf(task), 1);
-//     },
-//   },
-// });
 </script>
 
 <template>
@@ -52,17 +57,19 @@ export default {
     </div>
 
     <ul class="task-list">
-      <li class="task-list-item" v-for="task in tasks" :key="task.id"> 
-        <label class="task-list-item-label">
+      <li class="task-list-item" v-for="(task, index) in tasks" :key="task.id">
+        <label
+          class="task-list-item-label"
+          :class="{ done: task.done }"
+          @click="toggleDone(task)"
+        >
           <input type="checkbox" />
           <span>{{ task.content }}</span>
         </label>
-        <span class="delete-btn" title="Delete Task" @click="delItem(task)">{{
+        <span class="delete-btn" title="Delete Task" @click="delItem(index)">{{
           task.del
         }}</span>
       </li>
     </ul>
   </div>
 </template>
-
-<style scoped></style>
