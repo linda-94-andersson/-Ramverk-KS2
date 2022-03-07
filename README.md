@@ -14,3 +14,5 @@ För betyget Godkänt behöver följande krav uppfyllas:
 - Den ska använda state för att hantera innehållet i "to do" listan
 (En checkbox vars värde inte är kopplat till ett State är inte tillräckligt)
 - Den ska finnas deployad/publicerad på antingen Github Pages eller Netlify
+
+# https://ramverk-ks2.netlify.app/
